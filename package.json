@@ -17,10 +17,13 @@
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.5.3"
   },
+  "homepage": "https://rajanjoshi.github.io/ai-4-eye",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
