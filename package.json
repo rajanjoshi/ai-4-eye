@@ -5,17 +5,20 @@
   "dependencies": {
     "axios": "^0.17.1",
     "material-ui": "^0.20.0",
-    "react": "^16.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.14.0",
     "react-bootstrap": "^0.32.0",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.14.0",
     "react-flexbox-grid": "^2.0.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17",
-    "react-webcam": "^0.2.0",
+    "react-scripts": "^1.0.17",
+    "react-video-recorder": "^3.17.2",
+    "react-webcam": "^5.2.3",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "styled-components": "^5.2.1"
   },
   "homepage": "https://rajanjoshi.github.io/ai-4-eye",
   "scripts": {

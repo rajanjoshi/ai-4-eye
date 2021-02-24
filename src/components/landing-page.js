@@ -15,6 +15,10 @@ import FlatButton from 'material-ui/FlatButton';
 
 class LandingPage extends Component {
 
+    componentDidMount() {
+        document.getElementById("recognize").click();
+    }
+
     render() {
         return (
             <Grid fluid>
@@ -41,7 +45,7 @@ class LandingPage extends Component {
                             <CardText>
                             </CardText>
                             <CardActions>
-                                <Link to={'/recognize'}><FlatButton className='flat-btn' label="RECOGNIZE" /></Link>
+                                <Link to={'/recognize'}><FlatButton id = 'recognize' className='flat-btn' label="RECOGNIZE" /></Link>
                             </CardActions>
                         </Card>
                     </Col>

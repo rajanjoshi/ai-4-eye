@@ -39,7 +39,7 @@ class Recognize extends Component {
     }
 
     componentDidMount() {
-        this.props.clearDisplayData();
+        document.getElementById("detect").click();
     }
 
     setRef = (webcam) => {
@@ -47,29 +47,29 @@ class Recognize extends Component {
     }
 
     capture = () => {
-        this.setState({
-            load: true
-        });
+        // this.setState({
+        //     load: true
+        // });
 
         const imageSrc = this.webcam.getScreenshot();
 
-        axios.post(`https://api.kairos.com/recognize`, {
-            gallery_name: 'newCameriaGallery',
-            image: imageSrc
-        }, {
-                headers: {
-                    app_id: <enter your app id here/>,
-                    app_key: <enter your app key here/>
-                }
-            }).then((response) => {
-                console.log('response', response);
-                this.props.recognizeUser(response.data);
-                this.setState({
-                    load: false
-                });
-            }).catch((error) => {
-                console.log(error);
+        var url = 'http://localhost:3001/UploadFile';
+        var formData = new FormData();
+        formData.append("file", imageSrc);
+    
+        axios.post(url, formData, { 
+            headers: { 'Content-Type': 'multipart/form-data' } 
+        }).then((response) => {
+            console.log('response', response);
+            this.props.recognizeUser(response.data);
+            this.setState({
+                load: false
             });
+        }).catch((error) => {
+            console.log(error);
+        });
+
+        
     };
 
     render() {
@@ -81,10 +81,10 @@ class Recognize extends Component {
                             <h3>DETECT FACE</h3>
                             <Webcam
                                 audio={false}
-                                height={320}
+                                height={520}
                                 ref={this.setRef}
                                 screenshotFormat="image/png"
-                                width={320}
+                                width={520}
                             />
                             <RefreshIndicator
                                 className='css-loader'
@@ -96,7 +96,7 @@ class Recognize extends Component {
                                 style={(this.state.load === false) ? style.hide : style.refresh}
                             />
                             <br />
-                            <RaisedButton onClick={this.capture} label="DETECT" primary={true} style={{ 'margin': 16 }} />
+                            <RaisedButton id="detect" onClick={this.capture} label="DETECT" primary={true} style={{ 'margin': 16 }} />
                             <UserRecognize detect={this.props.detData} />
                         </div>
                     </Col>
