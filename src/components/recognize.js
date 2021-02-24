@@ -40,7 +40,12 @@ class Recognize extends Component {
     }
 
     componentDidMount() {
+        alert('hi')
         document.getElementById("detect").click();
+        const audioEl = document.getElementsByClassName("audio-element")[0];
+        audioEl.play();
+        var msg = new SpeechSynthesisUtterance('Your being recorded for authentication');
+        window.speechSynthesis.speak(msg);
     }
 
     setRef = (webcam) => {
@@ -69,6 +74,9 @@ class Recognize extends Component {
                 load: false
             });
         }).catch((error) => {
+        
+            var msg = new SpeechSynthesisUtterance('Face recognized. Welcome to Deutsche bank');
+            window.speechSynthesis.speak(msg);
             this.setState({
                 load: false
             });
@@ -87,10 +95,10 @@ class Recognize extends Component {
                             <h3>DETECT FACE</h3>
                             <Webcam
                                 audio={false}
-                                height={520}
+                                height={320}
                                 ref={this.setRef}
                                 screenshotFormat="image/png"
-                                width={520}
+                                width={320}
                             />
                             <RefreshIndicator
                                 className='css-loader'
@@ -108,6 +116,12 @@ class Recognize extends Component {
                         </div>
                     </Col>
                 </Row>
+                <div>
+       
+            <audio className="audio-element">
+            <source src="https://assets.coderrocketfuel.com/pomodoro-times-up.mp3"></source>
+            </audio>
+      </div>
             </Grid>
         );
     }

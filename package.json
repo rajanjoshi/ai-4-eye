@@ -20,7 +20,8 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.5.3",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "text-to-mp3": "^1.0.4"
   },
   "homepage": "https://rajanjoshi.github.io/ai-4-eye",
   "scripts": {
