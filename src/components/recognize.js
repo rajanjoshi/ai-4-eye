@@ -11,6 +11,7 @@ import axios from 'axios';
 
 import { connect } from 'react-redux';
 import { recognizeUser, clearDisplayData } from '../actions';
+import Chatbot from './Chatbot';
 
 import UserRecognize from './user-recognize';
 
@@ -47,15 +48,17 @@ class Recognize extends Component {
     }
 
     capture = () => {
-        // this.setState({
-        //     load: true
-        // });
+        
 
         const imageSrc = this.webcam.getScreenshot();
 
         var url = 'http://localhost:3001/UploadFile';
         var formData = new FormData();
         formData.append("file", imageSrc);
+
+        this.setState({
+            load: true
+        });
     
         axios.post(url, formData, { 
             headers: { 'Content-Type': 'multipart/form-data' } 
@@ -66,6 +69,9 @@ class Recognize extends Component {
                 load: false
             });
         }).catch((error) => {
+            this.setState({
+                load: false
+            });
             console.log(error);
         });
 
@@ -97,6 +103,7 @@ class Recognize extends Component {
                             />
                             <br />
                             <RaisedButton id="detect" onClick={this.capture} label="DETECT" primary={true} style={{ 'margin': 16 }} />
+                            <Chatbot/>
                             <UserRecognize detect={this.props.detData} />
                         </div>
                     </Col>
